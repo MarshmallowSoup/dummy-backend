@@ -37,6 +37,7 @@ function main () {
    res.header('Access-Control-Allow-Origin', '*');
    res.header('Access-Control-Allow-Headers', '*');
    res.header('Access-Control-Allow-Credentials', 'true');
+	   // The function next(); CANNOT BE REMOVED!!!
    next();
    })
   app.get('/get_modules_count', handlers.get_modules_count);
