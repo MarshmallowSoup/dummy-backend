@@ -4,12 +4,9 @@ const fs = require('fs');
 const { execSync } = require('child_process');
 
 class HandlerGenerator {
-  async get_whoami (req, res) {
-    count = await con.query(query, (err, rows) => {
-      if(err) throw err;  
+  get_whoami (req, res) {
       res.json({
         whoami: "Oleksa Hud"
-      });
     });
   }
 }
