@@ -2,28 +2,13 @@ const express = require('express');
 const http = require('http');
 const fs = require('fs');
 const { execSync } = require('child_process');
-var mysql = require('mysql')
-
-var con = mysql.createConnection({
-	  host: "localhost",
-	  user: "ohud",
-	  password: "1234567890",
-    database: 'ITEA'
-});
-
-con.connect(function(err) {
-	  if (err) throw err;
-	  console.log("Connected!");
-});
 
 class HandlerGenerator {
-  async get_modules_count (req, res) {
-    let count;
-    let query = 'SELECT * FROM my_modules'
+  async get_whoami (req, res) {
     count = await con.query(query, (err, rows) => {
       if(err) throw err;  
       res.json({
-        count: rows.length
+        whoami: "Oleksa Hud"
       });
     });
   }
@@ -40,7 +25,7 @@ function main () {
 	   // The function next(); CANNOT BE REMOVED!!!
    next();
    })
-  app.get('/get_modules_count', handlers.get_modules_count);
+  app.get('/get_whoami', handlers.get_whoami);
 	var server = http.createServer(app);
 	server.listen(port, () => console.log(`Server is listening on port: ${port}`));
 }
