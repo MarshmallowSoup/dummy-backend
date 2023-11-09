@@ -8,7 +8,7 @@ var con = mysql.createConnection({
 	  host: "localhost",
 	  user: "ohud",
 	  password: "1234567890",
-    database: 'ITEA'
+    database: 'VIS'
 });
 
 con.connect(function(err) {
@@ -17,9 +17,9 @@ con.connect(function(err) {
 });
 
 class HandlerGenerator {
-  async get_modules_count (req, res) {
+  async get_labs_count (req, res) {
     let count;
-    let query = 'SELECT * FROM my_modules'
+    let query = 'SELECT * FROM my_labs'
     count = await con.query(query, (err, rows) => {
       if(err) throw err;  
       res.json({
@@ -38,7 +38,7 @@ function main () {
   // res.header('Access-Control-Allow-Headers', '*');
   // res.header('Access-Control-Allow-Credentials', 'true');
   //})
-  app.get('/get_modules_count', handlers.get_modules_count);
+  app.get('/get_labs_count', handlers.get_labs_count);
 	var server = http.createServer(app);
 	server.listen(port, () => console.log(`Server is listening on port: ${port}`));
 }
