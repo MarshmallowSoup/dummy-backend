@@ -10,8 +10,8 @@ let con;
 async function initDbConnection() {
   try {
     con = await mysql.createConnection({
-      host: "mysql.default.svc.cluster.local",
-      user: "vlysetskyi",
+      host: "localhost",
+      user: "ohud",
       password: "1234567890",
       database: 'VIS'
     });
@@ -52,3 +52,4 @@ async function main() {
 main().catch(err => {
   console.error('Failed to start server:', err);
 });
+
